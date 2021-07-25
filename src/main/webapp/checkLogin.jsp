@@ -38,6 +38,7 @@ try {
         	session.setAttribute("user", userid); // the username will be stored in the session
         	out.println("welcome " + userid);
         	out.println("<a href='logout.jsp'>Log out</a>");
+        	response.sendRedirect("success.jsp");
         //if the name is good but the login fails, the password must be wrong
     } 	else {
         out.println("Invalid password <a href='Login.jsp'>try again</a>");
@@ -46,6 +47,7 @@ try {
     else{
     	out.println("Unknown user, please <a href='createUser.jsp'>create account</a> or <a href='Login.jsp'>try again</a>");
     }
+    db.closeConnection(con);
 } catch (Exception e) {
 	out.print(e);
 }

@@ -33,8 +33,11 @@ try {
     	out.println("User name already exists, please <a href='Login.jsp'>try again</a>");
     }
     else {
-    	out.println("Still need to implement adding user, and add successful log in page");
+    	session.setAttribute("user", userid); // the username will be stored in the session
+    	st.executeUpdate("insert into users values('" + userid + "', '" + userpw + "') ");
+    	response.sendRedirect("success.jsp");
     }
+    db.closeConnection(con);
 }catch (Exception e) {
 	out.print(e);
 }
