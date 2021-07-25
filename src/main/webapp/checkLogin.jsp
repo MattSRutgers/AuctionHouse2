@@ -22,9 +22,6 @@ try {
     //then we need to connect to the db
     ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
-	//Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/auction");
-    
-    //we also need somewhere to store the results from the db
     Statement st = con.createStatement();
     
     ResultSet checkUser;

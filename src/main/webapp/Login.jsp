@@ -14,7 +14,14 @@
     	  Username: <input type="text" name="username"/> <br/>
     	  Password:<input type="password" name="password"/> <br/>
 		  <input type="submit" value="Sign In"/>
-	</form>
+		</form>
+	<br>
+	Or if new user, please create account
+		<form action="createUser.jsp" method="post">
+	    	  Username: <input type="text" name="newuser"/> <br/>
+	    	  Password:<input type="password" name="newpassword"/> <br/>
+			  <input type="submit" value="Sign In"/>
+		</form>
 
 </body>
 </html>
