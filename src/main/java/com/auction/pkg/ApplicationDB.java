@@ -4,13 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.auction.pkg.ApplicationDB;
-
 public class ApplicationDB {
-
-public ApplicationDB(){
+	
+	public ApplicationDB(){
 		
 	}
+
 
 	public Connection getConnection(){
 		
