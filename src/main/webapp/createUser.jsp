@@ -27,14 +27,14 @@ try {
     
     ResultSet checkUser;
     
-    checkUser = st.executeQuery("select * from users where username='" + userid + "'");
+    checkUser = st.executeQuery("select * from users where userid='" + userid + "'");
     
     if (checkUser.next()){
     	out.println("User name already exists, please <a href='Login.jsp'>try again</a>");
     }
     else {
     	session.setAttribute("user", userid); // the username will be stored in the session
-    	st.executeUpdate("insert into users values('" + userid + "', '" + userpw + "') ");
+    	st.executeUpdate("insert into users values('" + userid + "','" + userpw + "')");
     	response.sendRedirect("success.jsp");
     }
     db.closeConnection(con);

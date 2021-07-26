@@ -16,8 +16,8 @@
 <%
 try {
 	//first we need to grab what the user entered as a string
-    String userid = request.getParameter("username");   
-    String userpw = request.getParameter("password");
+    String userid = request.getParameter("adminname");   
+    String userpw = request.getParameter("adminpassword");
 
     //then we need to connect to the db
     ApplicationDB db = new ApplicationDB();
@@ -27,25 +27,25 @@ try {
     ResultSet checkUser;
     ResultSet goodUserid;
     
-    checkUser = st.executeQuery("select * from users where userid='" + userid + "'");
+    checkUser = st.executeQuery("select * from admin where name='" + userid + "'");
     
     
     if (checkUser.next()){ //if this passes, the username is valid
-    	goodUserid = st.executeQuery("select * from users where userid='" + userid + "' and password='" + userpw + "'");
+    	goodUserid = st.executeQuery("select * from admin where name='" + userid + "' and password='" + userpw + "'");
     	//out.println("Unknown user, please <a href='Login.jsp'>create account</a>");
     //once we know the data is good display welcome, or prompt to check the password
     	if (goodUserid.next()) {
         	session.setAttribute("user", userid); // the username will be stored in the session
         	out.println("welcome " + userid);
         	out.println("<a href='logout.jsp'>Log out</a>");
-        	response.sendRedirect("success.jsp");
+        	response.sendRedirect("adminSuccess.jsp");
         //if the name is good but the login fails, the password must be wrong
     } 	else {
         out.println("Invalid password <a href='Login.jsp'>try again</a>");
     }
     }
     else{
-    	out.println("Unknown user, please <a href='register.jsp'>create account</a> or <a href='Login.jsp'>try again</a>");
+    	out.println("Unknown user, please <a href='Login.jsp'>try again</a>");
     }
     db.closeConnection(con);
 } catch (Exception e) {
